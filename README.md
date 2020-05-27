@@ -63,12 +63,17 @@ More details about the AWS environment itself, can be found into **Environment d
 - Terraform OSS version 0.12.X installed
 
 ## Initial setup (Preparing for *terrafom apply* command)
-- Part I - AWS Console 
+- Part I - AWS Console (Assets bucket)
   - Go to [AWS Console](https://aws.amazon.com/)
   - Create S3 Assets bucket manually. More info [here](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)
   - Upload `Airgap package with desired TFE version` and `Installer bootstraper`(replicated.tar) into the newly created bucket
 
-- Part II - Packer
+- Part II - AWS Console (Route 53 dns hosted zone)
+  - Go to [AWS Console](https://aws.amazon.com/)
+  - Create  [AWS public hosted zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html)
+  - Generate SSL certificates based on this zone (I am using certificates generated from Let's encrypt. More info [here](https://letsencrypt.org/getting-started/))
+  
+- Part III - Packer
   - clone this repository locally
   ```
   git clone https://github.com/berchev/ptfe-asg-lb-airgap-automated.git
