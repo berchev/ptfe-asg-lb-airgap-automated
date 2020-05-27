@@ -88,3 +88,29 @@ More details about the AWS environment itself, can be found into **Environment d
   ```
   packer build ubuntu_docker_ce_ami.json
   ```
+## Provisioning TFE environment
+- after finishing `Initial setup` section successfully, you are ready for Terraform part
+- make sure you are on the root directory on the repo. (where asg.tf, db.tf, lb.tf, r53.tf, s3.tf and vpc.tf are located)
+- review the example of [terraform.tfvars](terraform.tfvars) file and chnage some of the values according to your needs
+- install all needed Terraform providers
+```
+terraform init
+```
+- check which resources terraform is going to create
+```
+terraform plan -var 'access_key=YOUR_AWS_ACCESS_KEY' -var 'secret_key=YOUR_AWS_SECURITY_KEY'
+```
+- if no errors occurs, and you are satisfied with the result, apply the changes
+```
+terraform apply -var 'access_key=YOUR_AWS_ACCESS_KEY' -var 'secret_key=YOUR_AWS_SECURITY_KEY' --auto-approve
+```
+- once terraform finish, you will see an output very similar to this one:
+```
+TF OUTPUT
+```
+- right after that, the automated installation begin. Ordinary it will take between 40 and 60 min minutes.
+- after that time you can try to reach the dashboard on url: `http://your_tfe_fqdn:8800`. It should look like this:
+![](https://github.com/berchev/ptfe-asg-lb-airgap-automated/blob/master/screens/20.png)
+
+- if everything looks good, you can visit `https://your_tfe_fqdn`. It should look like this:
+![](https://github.com/berchev/ptfe-asg-lb-airgap-automated/blob/master/screens/21.png)
