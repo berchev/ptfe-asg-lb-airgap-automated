@@ -106,9 +106,27 @@ terraform apply -var 'access_key=YOUR_AWS_ACCESS_KEY' -var 'secret_key=YOUR_AWS_
 ```
 - once terraform finish, you will see an output very similar to this one:
 ```
-TF OUTPUT
+Apply complete! Resources: 58 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+aws_lb_dns_name = tfe-network-lb-c53d79042d318fc5.elb.us-east-1.amazonaws.com
+data_bucket_name = georgiman-tfe-bucket-data
+first_db_subnet = subnet-0c249126df35f711a
+lb_first_public_subnet = subnet-0a97b7c3ec42920c1
+lb_second_public_subnet = subnet-054e9e1a964305198
+postgres_hostname = terraform-20200527121514742400000001.coldp6eoybn0.us-east-1.rds.amazonaws.com:5432
+postgres_name = PostgresGeorgiman
+second_db_subnet = subnet-04153272082793378
+snapshot_bucket_name = georgiman-tfe-bucket-snapshots
+tfe_asg_name = tfe-georgiman-asg
+tfe_first_private_subnet = subnet-00e1282d0b889beae
+tfe_first_public_subnet = subnet-0d84c20d47b95792e
+tfe_second_private_subnet = subnet-09919eca87bd0824e
+tfe_second_public_subnet = subnet-0c1e2b40332a948bb
+tfe_website_url = newptfe.georgiman.com
 ```
-- right after that, the automated installation begin. Ordinary it will take between 40 and 60 min minutes.
+- right after that, the automated installation begin. Ordinary it will take between 40 and 60 minutes.
 - after that time you can try to reach the dashboard on url: `http://your_tfe_fqdn:8800`. It should look like this:
 ![](https://github.com/berchev/ptfe-asg-lb-airgap-automated/blob/master/screens/20.png)
 
